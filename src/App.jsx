@@ -10,11 +10,11 @@ function App() {
       const result = await fetch(
         import.meta.env.VITE_API_URL +
           "?token=" +
-          import.meta.env.VITE_API_TOKEN,
-        { credentials: "omit" }
+          import.meta.env.VITE_API_TOKEN
       );
       if (result) {
-        const json = result.json();
+        const json = await result.json();
+
         if (json) setData(json);
         else setData(null);
       }

@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <a target="_blank">
+        <a href="/" target="_blank">
           <img
             src={reactLogo}
             className="logo react"

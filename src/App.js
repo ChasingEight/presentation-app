@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
+import reactLogo from "./logo.svg";
 import "./App.css";
 
 function App() {
@@ -8,9 +8,9 @@ function App() {
   useEffect(() => {
     void (async () => {
       const result = await fetch(
-        import.meta.env.VITE_API_URL +
+        process.env.REACT_APP_API_URL +
           "?token=" +
-          import.meta.env.VITE_API_TOKEN
+          process.env.REACT_APP_API_TOKEN
       );
       if (result) {
         const json = await result.json();
@@ -25,12 +25,21 @@ function App() {
     <div className="App">
       <div>
         <a target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img
+            src={reactLogo}
+            className="logo react"
+            alt="React logo"
+            width={250}
+          />
         </a>
       </div>
-      <h1>{data && data.msg}</h1>
+      <h1>{data ? data.msg : "No data yet."}</h1>
       <div className="card">
-        {data && data.data ? data.data : "Setup API token"}
+        {data
+          ? data.data
+            ? data.data
+            : "Setup API token"
+          : "Waiting for fetch to finish."}
       </div>
     </div>
   );
